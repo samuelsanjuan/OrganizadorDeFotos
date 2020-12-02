@@ -23,6 +23,7 @@ fun siguiente(frame:JFrame,fotos:MutableList<String>,directorio:String):String{
         frame.setVisible(true)
 
     }
+
     return fotos[contador]
 }
 

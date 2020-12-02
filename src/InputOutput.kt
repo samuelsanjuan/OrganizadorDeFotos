@@ -1,9 +1,12 @@
 import java.io.*
+import java.nio.file.Files
+import java.nio.file.Paths
 
 var imagen2: BufferedOutputStream? = null
-    var imagen1: BufferedInputStream? = null
+var imagen1: BufferedInputStream? = null
 
-    fun copyImagen(directorio: String, foto: String,carpeta:String) {
+fun copyImagen(directorio: String, foto: String,carpeta:String) {
+
 
         imagen2 = BufferedOutputStream(FileOutputStream(directorio+"\\"+carpeta+"\\"+foto))
         imagen1 = BufferedInputStream(FileInputStream(directorio+"\\"+foto))
@@ -14,8 +17,15 @@ var imagen2: BufferedOutputStream? = null
                 imagen2!!.write(i)
             }
         }
-
         imagen1!!.close()
         imagen2!!.close()
 
+}
+
+fun deleteImage(foto: String,directorio: String,carpeta: String){
+    if (File(directorio+"\\"+carpeta+"\\"+foto).exists()){
+        Files.deleteIfExists(Paths.get(directorio+"\\"+foto))
+    }else{
+        println(foto+" no se borro")
     }
+}

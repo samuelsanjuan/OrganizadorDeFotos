@@ -8,7 +8,7 @@ import javax.swing.JPanel
 
 fun main() {
 
-    val directorio="D:\\imagenes\\zOtros"
+    val directorio="D:\\imagenes\\pruebas"
     val fotos:MutableList<String> = mutableListOf()
     var foto="a"
 
@@ -31,8 +31,11 @@ fun main() {
             val boton=Button(it)
             miniLayout.add(boton)
             boton.addActionListener{
-                copyImagen(directorio,foto,carpeta)
-                foto=siguiente(frame,fotos,directorio)
+                if (fotos.size-1>contador) {
+                    copyImagen(directorio, foto, carpeta)
+                    deleteImage(foto, directorio, carpeta)
+                    foto = siguiente(frame, fotos, directorio)
+                }
             }
         }
     }
