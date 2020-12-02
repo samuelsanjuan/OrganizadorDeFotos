@@ -4,11 +4,12 @@ import java.awt.Button
 import java.awt.GridLayout
 import java.io.File
 import javax.swing.JFrame
+import javax.swing.JOptionPane
 import javax.swing.JPanel
 
 fun main() {
 
-    val directorio="D:\\imagenes\\pruebas"
+    val directorio=JOptionPane.showInputDialog("directorio?")
     val fotos:MutableList<String> = mutableListOf()
     var foto="a"
 
