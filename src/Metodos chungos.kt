@@ -8,14 +8,14 @@ import kotlin.math.roundToInt
 var foto=JLabel(ImageIcon())
 var contador=-1
 
-fun siguiente(frame:JFrame,fotos:MutableList<String>,directorio:String):String{
+fun siguiente(frame:JFrame,fotos:MutableList<String>,directorio:String,barras:String):String{
 
     val icono:ImageIcon
 
     if (contador+1<fotos.size){
         contador+=1
         frame.remove(foto)
-        icono= ImageIcon(directorio+"\\"+fotos[contador])
+        icono= ImageIcon(directorio+barras+fotos[contador])
 
         foto = JLabel(escalar(icono))
 
@@ -27,13 +27,13 @@ fun siguiente(frame:JFrame,fotos:MutableList<String>,directorio:String):String{
     return fotos[contador]
 }
 
-fun anterior(frame:JFrame,fotos:MutableList<String>,directorio: String):String{
+fun anterior(frame:JFrame,fotos:MutableList<String>,directorio: String,barras: String):String{
 
     val icono:ImageIcon
     if (contador>0) {
         contador -= 1
         frame.remove(foto)
-        icono = ImageIcon(directorio + "\\" + fotos[contador])
+        icono = ImageIcon(directorio + barras + fotos[contador])
 
         foto = JLabel(escalar(icono))
 

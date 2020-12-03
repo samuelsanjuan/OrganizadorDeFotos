@@ -9,6 +9,14 @@ import javax.swing.JPanel
 
 fun main() {
 
+    val SO:String="linux"
+    val barras:String
+    if (SO=="linux"){
+        barras="/"
+    }else{
+        barras="\\"
+    }
+
     val directorio=JOptionPane.showInputDialog("directorio?")
     val fotos:MutableList<String> = mutableListOf()
     var foto="a"
@@ -24,7 +32,7 @@ fun main() {
     miniLayout.layout=GridLayout(2,4)
 
     File(directorio).list().forEach {
-        val comprobar=File(directorio+"\\"+it)
+        val comprobar=File(directorio+barras+it)
         if (!(comprobar.isDirectory)){
             fotos.add(it)
         }else{
@@ -33,9 +41,9 @@ fun main() {
             miniLayout.add(boton)
             boton.addActionListener{
                 if (fotos.size-1>contador) {
-                    copyImagen(directorio, foto, carpeta)
-                    deleteImage(foto, directorio, carpeta)
-                    foto = siguiente(frame, fotos, directorio)
+                    copyImagen(directorio, foto, carpeta,barras)
+                    deleteImage(foto, directorio, carpeta,barras)
+                    foto = siguiente(frame, fotos, directorio,barras)
                 }
             }
         }
@@ -52,11 +60,11 @@ fun main() {
     frame.isVisible = true
 
     anterior.addActionListener {
-        foto=anterior(frame,fotos,directorio)
+        foto=anterior(frame,fotos,directorio,barras)
     }
 
     siguiente.addActionListener {
-        foto=siguiente(frame,fotos,directorio)
+        foto=siguiente(frame,fotos,directorio,barras)
     }
 }
 
